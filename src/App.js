@@ -31,4 +31,5 @@ export default App;
 /*
 TODO: Poner los + en las tarjetas.
 TODO: Ver sii creamos carrusel de imágenes en la linea de tiempo. De moemento imágen fija.
+TODO: Añadir el post de contacto.
 */

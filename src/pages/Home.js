@@ -27,7 +27,7 @@ export default function Home() {
         </div>
       </section>
       <div className="separator" />
-      <secction id="gafas">
+      <section id="gafas">
         <Title title="Aplicación real" />
         <div className="gafas-container">
           <div className="gafas-img">
@@ -35,7 +35,7 @@ export default function Home() {
           </div>
           <h3 className="gafas-text">elegantes<br/>innovadoras<br/>a tu alcance</h3>
         </div>
-      </secction>
+      </section>
     </>
   );
 }

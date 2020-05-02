@@ -7,7 +7,7 @@
 :root {
   --primaryColor: #3c95e8;
   --primaryColorDarker: #1d7bd3;
-  --secondaryColor: #adff99;
+  --secondaryColor: #4b4b4b;
   --mainWhite: #f3f3f3;
   --pureWhite: #fff;
   --mainBlack: #1b1b1b;
@@ -152,7 +152,7 @@ h6 {
   left: 0;
   position: fixed;
   padding: 1.2em;
-  z-index: 1;
+  z-index: 99;
   width: 100%;
   height: 80px;
   background-color: var(--pureWhite);
@@ -206,6 +206,7 @@ h6 {
 .hero-container {
   width: 100%;
   height: 300px;
+  background-color: var(--mainBlack);
 }
 
 .hero {
@@ -220,6 +221,7 @@ h6 {
   background-size: 110% auto;
   background-position: center;
   box-shadow: var(--darkShadow);
+  transition: var(--mainTransition);
 }
 
 .hero-text {
@@ -327,7 +329,7 @@ h6 {
 }
 
 .error-container h2 {
-  font-size: 3em;
+  font-size: 2.8em;
   text-transform: uppercase;
 }
 /* End of Error */
@@ -338,19 +340,21 @@ h6 {
   width: 100%;
   display: flex;
   justify-content: center;
+  padding-left: 20px;
   padding-top: 100px;
-  padding-left: 30px;
   padding-bottom: 40px;
 }
 
 .timeline {
   flex: 1;
   height: 550px;
+  padding-left: 1.5vw;
   margin-right: 20px;
   background-color: var(--pureWhite);
   box-shadow: var(--lightShadow);
   display: flex;
   align-items: center;
+  height: auto;
 }
 
 .timeline .timeline-block {
@@ -389,6 +393,7 @@ h6 {
   align-items: center;
   justify-content: space-around;
   padding: 40px;
+  margin-bottom: 4em;
 }
 
 .gafas-img {
@@ -398,19 +403,22 @@ h6 {
 
 .gafas-img img {
   width: 100%;
+  position: relative;
+  left: 20%;
 }
 
 .gafas-text {
   flex: 1;
-  margin-left: 40px;
   margin-top: 60px;
-  font-size: 3.8em;
-  color: var(--pureWhite);
+  position: absolute;
+  right: 20%;
+  font-size: 6vw;
+  color: var(--secondaryColor);
   text-transform: uppercase;
   line-height: 1.5em;
   text-align: right;
   position: relative;
-  -webkit-text-stroke: 2.5px var(--mainBlack);
+  -webkit-text-stroke: 2px var(--mainWhite);
 }
 /* End of Gafas */
 
@@ -486,7 +494,128 @@ h6 {
 }
 /* End of Footer */
 
-/* Media= 768px */
+/* Contact */
+.contact-container {
+  height: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  text-align: center;
+  background-color: var(--secondaryColor);
+}
+
+.form-holder {
+  position: absolute;
+  width: 100%;
+  height: 672px;
+  top: 320px;
+  display: flex;
+  justify-content: center;
+  align-content: stretch;
+}
+
+.form-container {
+  width: 80%;
+  background-color: var(--mainWhite);
+  box-shadow: var(--darkShadow);
+  display: flex;
+}
+
+.form {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-box {
+  width: 70%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+.form-input div {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-box .MuiFormControl-root div:after {
+  border-color: var(--primaryColor);
+}
+.form-box .MuiFormLabel-root.Mui-focused {
+  color: var(--primaryColor);
+}
+
+.form-box .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primaryColor);
+}
+
+.form-box .MuiButton-containedPrimary {
+  background-color: var(--primaryColor);
+}
+
+.form-box .MuiButton-containedPrimary:hover {
+  background-color: var(--primaryColorDarker);
+}
+
+.form-info {
+  flex: 1;
+  background-color: var(--primaryColorDarker);
+}
+/*End of Contact*/
+
+/* Section Hero */
+.section-hero-container {
+  width: 100%;
+  margin-top: 10px;
+  height: 300px;
+  background-color: var(--mainBlack);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: stretch;
+  box-shadow: var(--darkShadow);
+}
+
+.section-hero-image {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  opacity: 0.3;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-hero-image img {
+  z-index: 1;
+  width: 110%;
+}
+
+.section-hero-container h2 {
+  z-index: 1;
+  font-size: 3em;
+  font-weight: 500;
+  margin-bottom: 0;
+  color: var(--mainGrey);
+}
+
+.section-hero-container h4 {
+  font-size: 2em;
+  font-weight: 100;
+  margin-top: 10px;
+  color: var(--darkGrey);
+}
+/* End of Section Hero */
+
+/* Media < 768px */
 @media (max-width: 768px) {
   /* Navbar */
   .navbar {
@@ -561,7 +690,7 @@ h6 {
   }
 
   .error-container h2 {
-    font-size: 1.5em;
+    font-size: 5vw;
   }
   /* End of Error Container */
 
@@ -591,18 +720,37 @@ h6 {
 
   .gafas-text {
     width: 80%;
-    font-size: 2em;
+    font-size: 6vw;
     text-align: center;
     margin: 0;
     margin-top: 20px;
-    -webkit-text-stroke: 1px var(--mainBlack);
+    -webkit-text-stroke: 1px var(--mainWhite);
+    right: 0;
   }
 
   .gafas-img {
     width: 70%;
     margin: 0;
-    margin-top: 30px;
+    margin-top: 0;
+  }
+
+  .gafas-img img {
+    left: 0;
+    bottom: 15px;
   }
   /* End of Gafas */
 }
-/* End of Media= 768px */
+/* End of Media < 768px */
+
+/* Media > 1200px */
+@media (min-width: 1200px) {
+  .card-container {
+    justify-content: center;
+  }
+
+  .card {
+    width: 300px;
+    margin: 0 50px;
+  }
+}
+/* End of Media > 1200px */
