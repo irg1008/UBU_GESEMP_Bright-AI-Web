@@ -152,7 +152,7 @@ h6 {
   left: 0;
   position: fixed;
   padding: 1.2em;
-  z-index: 99;
+  z-index: 99999999999;
   width: 100%;
   height: 80px;
   background-color: var(--pureWhite);
@@ -462,12 +462,20 @@ h6 {
 .footer-icons-container {
   width: 200px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
 .footer-icons-container a {
+  padding: 0 8px;
+}
+
+.black-icons a {
   color: var(--mainBlack);
+}
+
+.white-icons a {
+  color: var(--mainWhite);
 }
 
 .footer-final {
@@ -496,7 +504,7 @@ h6 {
 
 /* Contact */
 .contact-container {
-  height: 1000px;
+  height: 1050px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -512,6 +520,7 @@ h6 {
   height: 672px;
   top: 320px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-content: stretch;
 }
@@ -535,8 +544,12 @@ h6 {
   height: 90%;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   justify-content: space-around;
+}
+
+.form-box button {
+  width: 50%;
+  align-self: flex-end;
 }
 
 .form-input div {
@@ -544,15 +557,14 @@ h6 {
   border-top-right-radius: 0;
 }
 
-.form-box .MuiFormControl-root div:after {
+/* Form Color Classes - Remove When Upgraded */
+/* Bordes de los inputs cuando estas escribiendo */
+.form-box .MuiInput-underline.Mui-focused:after,
+.form-box .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: var(--primaryColor);
 }
 .form-box .MuiFormLabel-root.Mui-focused {
   color: var(--primaryColor);
-}
-
-.form-box .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-  border-color: var(--primaryColor);
 }
 
 .form-box .MuiButton-containedPrimary {
@@ -563,16 +575,78 @@ h6 {
   background-color: var(--primaryColorDarker);
 }
 
+/* End of Form Color Classes - Remove When Upgraded */
+
 .form-info {
   flex: 1;
   background-color: var(--primaryColorDarker);
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+  text-align: left;
+  padding: 60px;
+}
+
+.form-info div {
+  padding: 20px 0;
+}
+
+.form-text {
+  color: var(--pureWhite);
+  padding-bottom: 5px;
+}
+
+.form-link {
+  color: var(--mainBlack);
+  text-decoration: none;
+}
+
+.form-link:hover {
+  opacity: 0.8;
+}
+
+.form-send {
+  position: absolute;
+  height: 30px;
+  width: 80%;
+  background-color: rgb(20, 214, 69);
+  color: var(--pureWhite);
+  font-size: 0.8em;
+  z-index: 1;
+  bottom: 0;
+  box-shadow: var(--darkShadow);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -30px 0;
+  animation-name: fadeOut;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 /*End of Contact*/
 
 /* Section Hero */
 .section-hero-container {
   width: 100%;
-  margin-top: 10px;
   height: 300px;
   background-color: var(--mainBlack);
   display: flex;
@@ -584,14 +658,13 @@ h6 {
 
 .section-hero-image {
   position: absolute;
-  width: 100%;
   height: 300px;
   object-fit: cover;
   opacity: 0.3;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .section-hero-image img {
@@ -614,6 +687,37 @@ h6 {
   color: var(--darkGrey);
 }
 /* End of Section Hero */
+
+/* Media < 1200px */
+@media (max-width: 1200px) {
+  /* Contact */
+  .contact-container {
+    height: 1150px;
+  }
+
+  .form-holder {
+    height: 800px;
+  }
+
+  .form-container {
+    flex-direction: column-reverse;
+  }
+
+  .form {
+    flex: 5;
+  }
+
+  .form-info {
+    flex-direction: row;
+    height: 100px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    padding: 10px 0;
+  }
+  /* End of Contact */
+}
+/* End of Media < 1200px */
 
 /* Media < 768px */
 @media (max-width: 768px) {
@@ -739,8 +843,70 @@ h6 {
     bottom: 15px;
   }
   /* End of Gafas */
+
+  /* Contact */
+  .contact-container {
+    height: 1250px;
+  }
+
+  .form-holder {
+    height: 900px;
+  }
+
+  .form-info {
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .form-info .footer-icons-container {
+    width: 100%;
+  }
+  /* End of Contact */
 }
 /* End of Media < 768px */
+
+/* Media < 600px */
+@media (max-width: 600px) {
+  /* Contact */
+  .form-container {
+    width: 100%;
+  }
+
+  .form-send {
+    width: 100%;
+    height: 50px;
+    margin: -48px 0;
+  }
+
+  .form-info {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    text-align: center;
+  }
+  /* End of Contact */
+
+  /* Section Hero */
+  .section-hero-image {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section-hero-image img {
+    width: 200%;
+  }
+
+  .section-hero-container h2 {
+    font-size: 2.5em;
+  }
+
+  .section-hero-container h4 {
+    font-size: 1.3em;
+    padding: 0 30px;
+  }
+  /* End of Section Hero */
+}
+
+/* End of Media < 600px */
 
 /* Media > 1200px */
 @media (min-width: 1200px) {

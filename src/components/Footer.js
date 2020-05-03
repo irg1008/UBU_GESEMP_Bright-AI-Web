@@ -1,10 +1,7 @@
 import React from "react";
 import logoFooter from "../images/logo-footer.png";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import TwitterIcon from "@material-ui/icons/Twitter";
 import ClosedCaptionIcon from "@material-ui/icons/ClosedCaption";
+import Social from "../components/Social";
 
 export default function Footer() {
   return (
@@ -12,20 +9,7 @@ export default function Footer() {
       <div className="footer-upper-container">
         <img src={logoFooter} alt="bright-ai-logo" className="footer-logo" />
         <div className="footer-separator"></div>
-        <div className="footer-icons-container">
-          <a href="#github">
-            <GitHubIcon fontSize="large" />
-          </a>
-          <a href="#twitter">
-            <TwitterIcon fontSize="large" />
-          </a>
-          <a href="#face">
-            <FacebookIcon fontSize="large" />
-          </a>
-          <a href="#insta">
-            <InstagramIcon fontSize="large" />
-          </a>
-        </div>
+        <Social addedClass="black-icons" />
       </div>
       <div className="footer-final">
         <p>Bright AI</p>
