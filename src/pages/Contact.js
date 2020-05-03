@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import SectionHero from "../components/SectionHero";
+import SectionHero from "../components/others/SectionHero";
 import heroBG from "../images/contacto-hero.jpg";
-import Form from "../components/Form";
-import Social from "../components/Social";
+import Form from "../components/contact/Form";
+import Social from "../components/footer/Social";
 
 export default class Contact extends Component {
   constructor() {

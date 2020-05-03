@@ -1,7 +1,7 @@
 import React from "react";
-import logoFooter from "../images/logo-footer.png";
+import logoFooter from "../../images/logo-footer.png";
 import ClosedCaptionIcon from "@material-ui/icons/ClosedCaption";
-import Social from "../components/Social";
+import Social from "./Social";
 
 export default function Footer() {
   return (

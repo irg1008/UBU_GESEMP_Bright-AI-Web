@@ -29,6 +29,8 @@ export default class Form extends Component {
       },
       body: this.state,
     }).then((response) => {
+      console.log(response)
+      // On build change this to always correct because of problems on apache.
       if (response.status === 200) {
         this.props.isSent(true);
         this.resetForm();
@@ -52,8 +54,8 @@ export default class Form extends Component {
       <>
         <form
           className="form-box"
-          autoComplete="off"
-          onSubmit={this.handleSubmit}
+          method="POST"
+          onSubmit={this.handleSubmit.bind(this)}
         >
           <TextField
             type="text"

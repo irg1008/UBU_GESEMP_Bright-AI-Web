@@ -1,8 +1,8 @@
 import React from "react";
-import Tarjeta from "../components/Card";
-import objetos from "../images/objetos.jpeg";
-import descripcion from "../images/descripcion.jpeg";
-import distancia from "../images/distancia.jpeg";
+import Tarjeta from "./Card";
+import objetos from "../../images/objetos.jpeg";
+import descripcion from "../../images/descripcion.jpeg";
+import distancia from "../../images/distancia.jpeg";
 
 export default function CardContaner() {
   return (

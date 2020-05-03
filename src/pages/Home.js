@@ -1,8 +1,8 @@
 import React from "react";
-import HeroContainer from "../components/HeroContainer";
-import Title from "../components/Title";
-import CardContainer from "../components/CardContaner";
-import TimeLine from "../components/TimeLine";
+import HeroContainer from "../components/home/HeroContainer";
+import Title from "../components/home/Title";
+import CardContainer from "../components/home/CardContainer";
+import TimeLine from "../components/home/TimeLine";
 import src1 from "../images/how-1.png";
 import gafas from "../images/gafas.png";
 

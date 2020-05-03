@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/logo.png";
+import logo from "../../images/logo.png";
 import { HamburgerSqueeze as Hamburger } from "react-animated-burgers";
 
 export default class Navbar extends Component {

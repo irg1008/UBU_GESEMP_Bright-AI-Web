@@ -1,64 +1,26 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
-header("Content-Type: application/json");
-
 $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);
 
-$errors = array();
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-  if (empty($_POST['name'])) {
-    $errors[] = 'Name is empty';
-  } else {
-    $name = $_POST['name'];
-  }
+if (empty($_POST["name"]) && empty($_POST["email"]) && empty($_POST["message"])) die();
 
-  if (empty($_POST['email'])) {
-    $errors[] = 'Email is empty';
-  } else {
-    $email = $_POST['email'];
-  }
+if ($_POST) {
+  http_response_code(200);
+  $subject = $_POST["name"];
+  $to = "contacto@brightai.site";
+  $from = $_POST["email"];
+  $msg = $_POST["message"];
 
-  if (empty($_POST['message'])) {
-    $errors[] = 'Message is empty';
-  } else {
-    $message = $_POST['message'];
-  }
+  $headers = "MIME-Version 1.0\r\n";
+  $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+  $headers .= "From: <" . $from . ">";
 
-  if (empty($errors)) {
-    $date = date('j, F Y h:i A');
+  mail($to, $subject, $msg, $headers);
 
-    $emailBody = "
-    <html>
-    <head>
-    <title>$email is contacting you</title>
-    </head>
-    <body style=\"background-color:#fafafa;\">
-    <div style=\"padding:20px;\">
-    Fecha: <span style=\"color:#888\">$date</span>
-    <br>
-    Nombre: <span style=\"color:#888\">$name</span>
-    <br>
-    Email: <span style=\"color:#888\">$email</span>
-    <br>
-    Mensaje: <div style=\"color:#888\">$message</div>
-    </div>
-    </body>
-    </html>
-    ";
-
-    $headers =   'From: Contact Form <contact@mydomain.com>' . "\r\n" .
-      "Reply-To: $email" . "\r\n" .
-      "MIME-Version: 1.0\r\n" .
-      "Content-Type: text/html; charset=iso-8859-1\r\n";
-
-    $to = 'contacto@escala2.es';
-    $subject = 'Tienes un nuevo formulario';
-
-    if (mail($to, $subject, $emailBody, $headers)) {
-      $sent = true;
-    }
-  }
+  echo json_encode(array("sent" => true));
+} else {
+  echo json_encode(array("sent" => false));
 }
 ?>
