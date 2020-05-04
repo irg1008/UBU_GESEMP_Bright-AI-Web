@@ -2,25 +2,26 @@ import React, { Component } from "react";
 import Dropzone from "./Dropzone";
 import ButtonContainer from "./ButtonContainer";
 import AudioSource from "./AudioSource";
-import Button from "@material-ui/core/Button";
 
 class DropFilesZone extends Component {
   constructor(props) {
     super(props);
     this.state = {
       file: null,
-      buttonEnabled: false,
       url: null,
       prediction: null,
       predictionOriginal: null,
       audioOutput: null,
+      waitingFile: false,
+      enabledButton: false,
     };
   }
 
   useDataFromFileDrop = (file) => {
     this.setState({ file }, () => {
-      if (this.state.file !== undefined) this.setState({ buttonEnabled: true });
-      else this.setState({ buttonEnabled: false });
+      if (this.state.file !== undefined)
+        this.setState({ waitingFile: true, enabledButton: true });
+      else this.setState({ waitingFile: false });
     });
   };
 
@@ -69,6 +70,7 @@ class DropFilesZone extends Component {
     this.getBase64(this.state.file, (result) => {
       this.setState({
         url: result,
+        enabledButton: false,
       });
     });
   };
@@ -79,13 +81,13 @@ class DropFilesZone extends Component {
       prediction: null,
       audioOutput: null,
       predictionoriginal: null,
+      enabledButton: false,
     });
   };
 
   translateText = (text) => {
     const TO_LANG = "es";
     const API_KEY = process.env.REACT_APP_GOOGLE_TRANSLATION_API_KEY;
-    console.log(API_KEY);
     const TEXT = encodeURI(text);
     let traduccion;
 
@@ -139,6 +141,7 @@ class DropFilesZone extends Component {
         audio64 += response.audioContent;
         this.setState({
           audioOutput: audio64,
+          enabledButton: true,
         });
       })
       .catch((error) => {
@@ -148,40 +151,34 @@ class DropFilesZone extends Component {
 
   render() {
     return (
-      <div>
-        <section className="body-container">
+      <div className="try-holder">
+        <div className="try-data-handler">
           {this.state.url !== null ? (
-            <div className="preview-container">
-              <div className="image-container">
-                <img className="image-to-use" src={this.state.url} alt="" />
-              </div>
-              <Button
-                className="dropzone-button"
-                variant="contained"
-                color="secondary"
-                size="medium"
-                onClick={this.removeImage}
-              >
-                PROBAR CON OTRA IMÁGEN
-              </Button>
+            <div className="try-preview-container">
+              <img src={this.state.url} alt="" />
             </div>
           ) : (
-            <div>
+            <div className="try-data-dropzone">
               <Dropzone dataFromFileDrop={this.useDataFromFileDrop} />
             </div>
           )}
           <ButtonContainer
             fileToScript={this.getCurlResponse}
-            enabled={this.state.buttonEnabled}
+            removeImage={this.removeImage}
+            enabled={this.state.waitingFile}
+            text={
+              this.state.url !== null
+                ? "PROBAR CON OTRA IMÁGEN"
+                : "CONVERTIR IMÁGEN A AUDIO"
+            }
+            buttonIsDisabled={this.state.enabledButton}
           />
           <AudioSource audioSource={this.state.audioOutput} />
-        </section>
-        {this.state.prediction !== null ? (
-          <div>
+        </div>
+        {this.state.prediction !== null && (
+          <div className="try-text-respond">
             <p className="prediction">{this.state.prediction}</p>
           </div>
-        ) : (
-          <div></div>
         )}
       </div>
     );

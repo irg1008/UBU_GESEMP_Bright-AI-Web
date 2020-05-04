@@ -1,6 +1,6 @@
 import React from "react";
 import Tarjeta from "./Card";
-import objetos from "../../images/objetos.jpeg";
+import objetos from "../../images/objetos.jpg";
 import descripcion from "../../images/descripcion.jpeg";
 import distancia from "../../images/distancia.jpeg";
 

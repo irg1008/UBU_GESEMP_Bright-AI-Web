@@ -10,34 +10,36 @@ export default class Form extends Component {
       email: "",
       company: "",
       message: "",
+      started: false,
     };
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
+      started: true,
     });
     this.props.isSent(false);
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    fetch("api/index.php", {
+    fetch("api/contact.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: this.state,
-    }).then((response) => {
-      console.log(response)
-      // On build change this to always correct because of problems on apache.
-      if (response.status === 200) {
-        this.props.isSent(true);
-        this.resetForm();
-      } else {
-        alert("No se ha podido enviar el formulario.");
-      }
-    });
+      body: JSON.stringify(this.state),
+    })
+      .then((response) => response.json())
+      .then((responseJ) => {
+        if (responseJ.sent === true) {
+          this.props.isSent(true);
+          this.resetForm();
+        } else if (responseJ.sent === false) {
+          alert("No se ha podido enviar el formulario.");
+        }
+      });
   };
 
   resetForm = () => {
@@ -46,6 +48,7 @@ export default class Form extends Component {
       email: "",
       company: "",
       message: "",
+      started: false,
     });
   };
 
@@ -65,7 +68,7 @@ export default class Form extends Component {
             onChange={this.handleChange.bind(this)}
             label="Nombre"
             required={true}
-            error={this.state.name === ""}
+            error={this.state.name === "" && this.state.started}
             autoFocus={true}
           />
           <TextField
@@ -76,7 +79,7 @@ export default class Form extends Component {
             onChange={this.handleChange.bind(this)}
             label="Email"
             required={true}
-            error={this.state.email === ""}
+            error={this.state.email === "" && this.state.started}
           />
           <TextField
             type="text"
@@ -97,7 +100,7 @@ export default class Form extends Component {
             label="Mensaje"
             variant="outlined"
             required={true}
-            error={this.state.message === ""}
+            error={this.state.message === "" && this.state.started}
           />
           <Button type="submit" variant="contained" color="primary">
             Enviar

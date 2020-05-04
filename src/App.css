@@ -215,9 +215,9 @@ h6 {
   background-image: linear-gradient(
       90deg,
       rgba(0, 0, 0, 1),
-      rgba(0, 0, 0, 0.8) 40%
+      rgba(0, 0, 0, 0.4) 40%
     ),
-    url(./images/hero-banner.png);
+    url(./images/hero-banner.jpg);
   background-size: 110% auto;
   background-position: center;
   box-shadow: var(--darkShadow);
@@ -312,7 +312,7 @@ h6 {
   height: 100%;
   width: 100%;
   background: linear-gradient(0, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 100%),
-    url(./images/404.png);
+    url(./images/404.jpg);
   background-position: center;
   background-size: cover;
   color: var(--mainWhite);
@@ -517,7 +517,8 @@ h6 {
 .form-holder {
   position: absolute;
   width: 100%;
-  height: 672px;
+  min-height: 672px;
+  height: auto;
   top: 320px;
   display: flex;
   flex-direction: row;
@@ -659,6 +660,7 @@ h6 {
 
 .section-hero-image {
   position: absolute;
+  width: 100%;
   height: 300px;
   object-fit: cover;
   opacity: 0.3;
@@ -692,7 +694,7 @@ h6 {
 
 /* Try */
 .try-container {
-  height: 1050px;
+  height: 1100px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -700,6 +702,95 @@ h6 {
   align-content: center;
   text-align: center;
   background-color: var(--secondaryColor);
+}
+
+.try-holder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 60px;
+}
+
+.try-data-handler {
+  flex: 1;
+  width: 80%;
+  min-height: 600px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.try-preview-container {
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.try-preview-container img {
+  box-shadow: var(--darkShadow);
+}
+
+.try-data-dropzone {
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  box-shadow: var(--lightShadow);
+}
+
+.try-data-dropzone * {
+  outline: none;
+}
+
+.try-text-respond {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.try-data-handler .MuiButton-contained {
+  color: var(--mainWhite);
+  width: 100%;
+  font-size: 1.5em;
+  height: 80px;
+  background-color: var(--primaryColor);
+}
+
+.try-data-handler .MuiButton-contained:hover {
+  background-color: var(--primaryColorDarker);
+}
+
+.try-audio {
+  width: 100%;
+  height: auto;
+}
+
+.try-audio div {
+  margin: 0;
+}
+
+.try-text-respond {
+  width: 80%;
+  min-height: 150px;
+  height: auto;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+  font-weight: bold;
 }
 /* End of Try */
 
@@ -877,6 +968,12 @@ h6 {
     width: 100%;
   }
   /* End of Contact */
+
+  /* Try */
+  .try-container .form-holder {
+    height: auto;
+  }
+  /* End of Try */
 }
 /* End of Media < 768px */
 
@@ -920,7 +1017,6 @@ h6 {
   }
   /* End of Section Hero */
 }
-
 /* End of Media < 600px */
 
 /* Media > 1200px */

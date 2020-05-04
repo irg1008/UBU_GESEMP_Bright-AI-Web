@@ -8,20 +8,16 @@ class DropzoneAreaExample extends React.Component {
 
   render() {
     return (
-      <div className="dropzone-container">
-        <div className="dropzone">
-          <DropzoneArea
-            dropzoneClass="dropzone-drop"
-            acceptedFiles={["image/*"]}
-            dropzoneText={"Arrastra la imágen a analizar"}
-            filesLimit={1}
-            fullWidth={true}
-            maxFileSize={10000000}
-            showPreviewsInDropzone={true}
-            onChange={this.handleChange.bind(this)}
-          />
-        </div>
-      </div>
+      <DropzoneArea
+        dropzoneClass="dropzone-drop"
+        acceptedFiles={["image/*"]}
+        dropzoneText={"Arrastra la imágen a analizar"}
+        filesLimit={1}
+        fullWidth={true}
+        maxFileSize={10000000}
+        showPreviewsInDropzone={true}
+        onChange={this.handleChange.bind(this)}
+      />
     );
   }
 }

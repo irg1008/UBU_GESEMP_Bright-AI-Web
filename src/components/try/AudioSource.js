@@ -11,7 +11,7 @@ class AudioSource extends React.Component {
 
   render() {
     return (
-      <div className="audio">
+      <div className="try-audio">
         <ThemeProvider theme={muiTheme}>
           <AudioPlayer
             src={this.props.audioSource}
